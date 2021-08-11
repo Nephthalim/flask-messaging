@@ -7,7 +7,7 @@ from flask_jwt_extended import create_access_token
 import bcrypt
 from flask_cors import cross_origin
 from server.models.user import User
-eventlet.monkey_patch()
+
 app = create_app('testing')
 socketio = SocketIO(app, cors_allowed_origins="*")
 
