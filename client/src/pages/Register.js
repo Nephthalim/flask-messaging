@@ -5,7 +5,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Register = ({ setAuthentication }) => {
     
-    const url = "https://nephthalims-chat.herokuapp.com"
+    const url = "http://nephthalims-chat.herokuapp.com"
+    // const url = "http://127.0.0.1:5000"
 
     const addUser = (user) => {
         fetch(
