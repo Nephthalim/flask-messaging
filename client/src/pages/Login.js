@@ -4,7 +4,7 @@ import Nav from '../components/Nav/Nav';
 import { toaster } from '../App.js'
 
 const Login = ({ setAuthentication }) => {
-    const url = "http://localhost:5000"
+    const url = "https://nephthalims-chat.herokuapp.com"
 
     const loginUser = (user, setErrorMessage) => {
         fetch(
@@ -19,11 +19,11 @@ const Login = ({ setAuthentication }) => {
                 mode: 'cors'
             }
 
-        ).then((res) => {        
+        ).then((res) => {
             switch (res.status) {
                 case 201: return res.json();
                 case 422:
-                    toaster.error("Missing data") 
+                    toaster.error("Missing data")
                     break;//flash missing data;
                 case 401:
                     toaster.error("Please check if you are using the right username or password")
@@ -31,7 +31,7 @@ const Login = ({ setAuthentication }) => {
                 default:
                     toaster.error("There seems to be an internal error 😬 It's not me, I promise. Please try again some other time! ") //flash error
                     break;
-                
+
             }
         }).then((data) => {
             if (data.access_token) {

@@ -1,3 +1,4 @@
 /server/flask_session
 /server/venv
 /server/.env
+/server/instance

@@ -11,7 +11,7 @@ import './Chat.css'
 import { io } from "socket.io-client";
 const Chat = ({ isAuthenticated, setAuthentication }) => {
     const token = localStorage.getItem('x-token')
-    const socket = io("http://localhost:5000", { path: '/socket.io/', extraHeaders: { 'x-token': token, 'Content-Type': 'application/json' } });
+    const socket = io("https://nephthalims-chat.herokuapp.com", { path: '/socket.io/', extraHeaders: { 'x-token': token, 'Content-Type': 'application/json' } });
     const [chatId, setChatId] = useState();
     const [contact, setContact] = useState();
     const match = useRouteMatch();

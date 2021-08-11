@@ -12,7 +12,7 @@ const Contacts = ({ setContact, chatId, isAuthenticated, setAuthentication }) =>
     const [conversations, setConversations] = useState([]);
     const [searchRes, setSearchRes] = useState([]);
 
-    const url = "http://localhost:5000"
+    const url = "https://nephthalims-chat.herokuapp.com"
     const match = useRouteMatch();
     const history = useHistory();
     const token = localStorage.getItem('x-token')

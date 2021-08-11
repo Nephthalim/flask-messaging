@@ -7,7 +7,7 @@ const ChatRoom = ({ socket, setChatId, contact }) => {
     const token = localStorage.getItem("x-token");
     const { chatId } = useParams();
     const textInputRef = useRef();
-    const url = 'http://127.0.0.1:5000'
+    const url = "https://nephthalims-chat.herokuapp.com"
     const [messages, setMessages] = useState([]);
     const [user, setUser] = useState([]);
 
