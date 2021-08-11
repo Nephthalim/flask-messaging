@@ -1,1 +1,1 @@
-web: gunicorn --worker-class socketio.sgunicorn.GeventSocketIOWorker --log-file=- app:app
+web: uwsgi --http :5000 --gevent 1000 --http-websockets --master --wsgi-file app.py --callable app
