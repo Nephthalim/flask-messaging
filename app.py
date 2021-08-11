@@ -52,6 +52,8 @@ def join(message):
     return 'joined'
 
 @app.route("/")
+@app.route("/chat")
+@app.route("/chat/")
 def my_index():
     return render_template("index.html")
 
