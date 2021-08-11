@@ -7,7 +7,7 @@ from flask_jwt_extended import create_access_token
 import bcrypt
 from flask_cors import cross_origin
 from server.models.user import User
-
+eventlet.monkey_patch()
 app = create_app('testing')
 socketio = SocketIO(app, cors_allowed_origins="*")
 
@@ -55,7 +55,7 @@ def join(message):
 @app.route("/chat")
 def my_index():
     return render_template("index.html")
-    
+
 @app.route("/chat/<chat_id>")
 def chat(chat_id):
     return render_template("index.html")
