@@ -88,7 +88,6 @@ PyGetWindow==0.0.9
 PyJWT==2.1.0
 PyMsgBox==1.0.9
 pyobjc==7.1
-pyobjc-core==7.1
 pyobjc-framework-Accessibility==7.1
 pyobjc-framework-Accounts==7.1
 pyobjc-framework-AddressBook==7.1
@@ -109,7 +108,6 @@ pyobjc-framework-CallKit==7.1
 pyobjc-framework-CFNetwork==7.1
 pyobjc-framework-ClassKit==7.1
 pyobjc-framework-CloudKit==7.1
-pyobjc-framework-Cocoa==7.1
 pyobjc-framework-Collaboration==7.1
 pyobjc-framework-ColorSync==7.1
 pyobjc-framework-Contacts==7.1
