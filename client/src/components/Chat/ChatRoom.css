@@ -1,0 +1,29 @@
+.hero {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+.messages {
+    height: 90%;
+    overflow: auto;
+    position: relative;
+}
+
+.msg_input {
+    width: 99%;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    position: absolute;
+    bottom: 0;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    transform: translateX(-50%);
+}
+
+.msg_input:focus {
+    outline: 0px !important;
+    border: 1.5px solid rgb(169, 168, 168);
+}

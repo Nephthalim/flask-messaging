@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
+:root {
+    --primary-color: #02a6cf;
+    --accent-color: #30f4ff;
+}
+
+body {
+    background: white;
+    margin: 0;
+    margin-left: 0.5em;
+    font-family: "Raleway";
+    text-align: center;
+}
+
+.search {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 1px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.contact_list {
+    /* width: 315px; */
+    min-width: 315px;
+    padding: 0rem 1.25rem;
+    height: 100vh;
+    border-right: 1px solid #e4e4e4;
+    overflow-y: auto;
+}
+
+.contact_list a {
+    text-decoration: none;
+}
+
+.contact_list .row .initials {
+    height: 50px;
+    width: 50px;
+    margin: 0.5rem;
+    background: #e4e4e4e4;
+    border-radius: 25rem;
+    position: relative;
+}
+
+.contact_list .row .initials p {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.contact_list .row {
+    height: 65px;
+    margin-top: 0.5rem;
+    display: flex;
+    font-size: 0.8rem;
+    justify-content: left;
+    align-items: center;
+    color: Black;
+}
+
+.border {
+    margin: 0 1.5rem;
+    border-top: 1px solid #e4e4e4;
+}
+
+.contact_list .row:hover {
+    border-radius: 0.5rem;
+    background: rgb(213, 213, 213);
+    /* background: linear-gradient(to bottom right, var(--accent-color), var(--primary-color)); */
+}
+
+.clicked {
+    border-radius: 0.5rem;
+    background: rgb(213, 213, 213);
+    /* background: linear-gradient(to bottom right, var(--accent-color), var(--primary-color)); */
+}
+
+input:focus {
+    outline: 0px !important;
+    border: 1px solid rgb(169, 168, 168);
+}
+
+.contact_list .row .column {
+    font-size: 0.8rem;
+    vertical-align: center;
+    margin-top: 0;
+}
+
+.contact_list .row .column h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 0.8rem;
+}
+
+.logout {
+    position: absolute;
+    font-size: 20px;
+    padding: 1rem;
+    bottom: 10px;
+    left: 15px;
+}

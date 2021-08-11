@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
+:root {
+    --primary-color: #02a6cf;
+    --accent-color: #30f4ff;
+}
+
+.body {
+    background: #e5e5e5;
+    font-family: "Raleway";
+    padding: 0;
+    margin: 0;
+    /* padding-top: auto; */
+    height: 100%
+}
+
+.container {
+    /* padding-top: auto; */
+    background: white;
+    max-width: 450px;
+    max-height: 650px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    /* or/ whatever width you want. */
+    justify-content: center;
+    display: block;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    border-radius: 2.5em;
+}
+
+.container .column {
+    padding: 5em;
+}
+
+.container .column .login form {
+    margin: auto;
+    /* -webkit-box-align: center; */
+    /* -ms-flex-align: center; */
+    /* align-items: center; */
+}
+
+.container .column .login form input {
+    padding: 12px 20px;
+    margin: 8px 0;
+    width: 15em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.container .column .login form #register-btn {
+    cursor: pointer;
+}
+
+.container .column h1 {
+    font-size: 3em;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.container .column h2 {
+    background-image: -webkit-gradient(linear, left top, right bottom, from(var(--accent-color)), to(var(--primary-color)));
+    background-image: linear-gradient(to bottom right, var(--accent-color), var(--primary-color));
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    font-size: 1.75em;
+    padding: 0;
+    margin-top: 0;
+}

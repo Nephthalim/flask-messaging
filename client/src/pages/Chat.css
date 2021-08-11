@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
+:root {
+    --primary-color: #02a6cf;
+    --accent-color: #30f4ff;
+}
+
+.chat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+img {
+    padding: 2rem;
+    width: auto;
+}

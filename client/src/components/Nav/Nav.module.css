@@ -1,0 +1,64 @@
+.navbar {
+    background: white;
+    padding: 1em 1.5em;
+}
+
+.navbar .container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.navbar .container .logo {
+    font-size: 1.75em;
+    padding: 1em;
+    width: auto;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+}
+
+.navbar .container .logo span {
+    background-image: -webkit-gradient(linear, left top, right bottom, from(var(--accent-color)), to(var(--primary-color)));
+    background-image: linear-gradient(to bottom right, var(--accent-color), var(--primary-color));
+    background-clip: text;
+    background-repeat: repeat;
+    /* Use the text as a mask for the background. */
+    /* This will show the gradient as a text color rather than element bg. */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+
+.navbar .container nav {
+    background: white;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    position: unset;
+    margin-left: auto;
+    font-size: 1.75em;
+}
+
+.navbar .container nav ul {
+    list-style-type: none;
+    text-align: center;
+    margin-right: 1em;
+}
+
+.navbar .container nav ul a {
+    text-decoration: none;
+    font-weight: bold;
+    background-image: -webkit-gradient(linear, left top, right bottom, from(var(--accent-color)), to(var(--primary-color)));
+    background-image: linear-gradient(to bottom right, var(--accent-color), var(--primary-color));
+    background-clip: text;
+    background-repeat: repeat;
+    /* Use the text as a mask for the background. */
+    /* This will show the gradient as a text color rather than element bg. */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}

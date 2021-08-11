@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
+:root {
+    --primary-color: #02a6cf;
+    --accent-color: #30f4ff;
+}
+
+body {
+    background: white;
+    margin: 0;
+    font-family: "Raleway";
+}
+
+.navbar {
+    background: white;
+    padding: 1em 1.5em;
+}
+
+
+/* 
+.navbar .container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+} */
+
+.navbar .container .logo {
+    font-size: 1.75em;
+    padding: 1em;
+    /* width: auto; */
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+}
+
+.navbar .container .logo span {
+    background-image: -webkit-gradient(linear, left top, right bottom, from(var(--accent-color)), to(var(--primary-color)));
+    background-image: linear-gradient(to bottom right, var(--accent-color), var(--primary-color));
+    background-clip: text;
+    background-repeat: repeat;
+    /* Use the text as a mask for the background. */
+    /* This will show the gradient as a text color rather than element bg. */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+
+.navbar .container nav {
+    background: white;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    position: unset;
+    margin-left: auto;
+    font-size: 1.75em;
+}
+
+.navbar .container nav ul {
+    list-style-type: none;
+    text-align: center;
+    margin-right: 1em;
+}
+
+a {
+    cursor: pointer;
+}
+
+.navbar .container nav ul a {
+    text-decoration: none;
+    font-weight: bold;
+    background-image: -webkit-gradient(linear, left top, right bottom, from(var(--accent-color)), to(var(--primary-color)));
+    background-image: linear-gradient(to bottom right, var(--accent-color), var(--primary-color));
+    background-clip: text;
+    background-repeat: repeat;
+    /* Use the text as a mask for the background. */
+    /* This will show the gradient as a text color rather than element bg. */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+
+.hero {
+    text-align: center;
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center;
+}
+
+.hero .container {
+    margin: 2em;
+}
+
+.hero .container h1 {
+    font-size: 3em;
+    padding: 0;
+    margin: 0 auto;
+}
+
+.hero .container h2 {
+    font-size: 1.75em;
+    padding: 0;
+    margin: 0 auto;
+}
+
+.hero .container input {
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.hero .container .buttons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.hero .container .buttons .btn {
+    width: 100px;
+    text-decoration: none;
+    border-radius: 0.75em;
+    padding: 1em;
+    margin: 0.5em;
+    color: white;
+    background: -webkit-gradient(linear, left top, right bottom, from(var(--accent-color)), to(var(--primary-color)));
+    background: linear-gradient(to bottom right, var(--accent-color), var(--primary-color));
+}
+
+.hero .container .description {
+    display: none;
+}
+
+.hero img {
+    width: 65%;
+    /* overflow: hidden; */
+}
+
+@media screen and (min-width: 800px) {
+    section.hero {
+        display: flex;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-items: center;
+        text-align: center;
+        margin: 3em;
+    }
+    section.hero .container h1 {
+        top: 50%;
+        font-size: 5rem;
+        padding-right: 0;
+        margin-right: 0;
+    }
+    section.hero .container .description {
+        display: block;
+    }
+    section.hero img {
+        width: 80%;
+        padding-left: 0;
+        margin-left: 0;
+    }
+}

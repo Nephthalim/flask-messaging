@@ -1,0 +1,66 @@
+:root {
+    --primary-color: #02a6cf;
+    --accent-color: #30f4ff;
+}
+
+.message {
+    width: fit-content;
+    max-width: 50%;
+    height: 100px;
+    padding: 0.5rem 1.5rem;
+    list-style-type: none;
+}
+
+.card {
+    min-width: 100px;
+}
+
+.content .initials {
+    height: 50px;
+    width: 50px;
+    margin: 0.5rem;
+    background: #e4e4e4e4;
+    border-radius: 25rem;
+    position: relative;
+}
+
+.content .initials p {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.my_message {
+    margin-left: auto;
+    margin-right: 0px;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+}
+
+.their_message .text_message {
+    text-align: left;
+    min-width: 125px;
+    padding: 1.25rem;
+    border-radius: 2.5rem;
+    background: rgb(213, 213, 213);
+}
+
+.my_message .text_message {
+    text-align: left;
+    min-width: 125px;
+    padding: 1.25rem;
+    border-radius: 2.5rem;
+    background: -webkit-gradient(linear, left top, right bottom, from(var(--accent-color)), to(var(--primary-color)));
+    background: linear-gradient(to bottom right, var(--accent-color), var(--primary-color));
+}
+
+.time_sent {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 1.5rem;
+}

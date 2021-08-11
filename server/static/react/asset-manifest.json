@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/react/static/css/main.64ce6e49.chunk.css",
+    "main.js": "/static/react/static/js/main.612217e9.chunk.js",
+    "main.js.map": "/static/react/static/js/main.612217e9.chunk.js.map",
+    "runtime-main.js": "/static/react/static/js/runtime-main.77a2263d.js",
+    "runtime-main.js.map": "/static/react/static/js/runtime-main.77a2263d.js.map",
+    "static/css/2.97503911.chunk.css": "/static/react/static/css/2.97503911.chunk.css",
+    "static/js/2.084419ef.chunk.js": "/static/react/static/js/2.084419ef.chunk.js",
+    "static/js/2.084419ef.chunk.js.map": "/static/react/static/js/2.084419ef.chunk.js.map",
+    "../../templates/index.html": "/static/react/../../templates/index.html",
+    "static/css/2.97503911.chunk.css.map": "/static/react/static/css/2.97503911.chunk.css.map",
+    "static/css/main.64ce6e49.chunk.css.map": "/static/react/static/css/main.64ce6e49.chunk.css.map",
+    "static/js/2.084419ef.chunk.js.LICENSE.txt": "/static/react/static/js/2.084419ef.chunk.js.LICENSE.txt",
+    "static/media/image.1df5cf55.svg": "/static/react/static/media/image.1df5cf55.svg",
+    "static/media/undraw_Online_chat_re_c4lx.43211c95.svg": "/static/react/static/media/undraw_Online_chat_re_c4lx.43211c95.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.77a2263d.js",
+    "static/css/2.97503911.chunk.css",
+    "static/js/2.084419ef.chunk.js",
+    "static/css/main.64ce6e49.chunk.css",
+    "static/js/main.612217e9.chunk.js"
+  ]
+}
