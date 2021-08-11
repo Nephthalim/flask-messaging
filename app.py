@@ -53,8 +53,7 @@ def join(message):
 
 @app.route("/")
 @app.route("/chat")
-@app.route("/chat/:chatId")
-def my_index(chatId):
+def my_index():
     return render_template("index.html")
 
 if __name__ == "__main__":
