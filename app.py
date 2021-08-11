@@ -55,6 +55,10 @@ def join(message):
 @app.route("/chat")
 def my_index():
     return render_template("index.html")
+    
+@app.route("/chat/<chat_id>")
+def chat(chat_id):
+    return render_template("index.html")
 
 if __name__ == "__main__":
     socketio.run(app)
