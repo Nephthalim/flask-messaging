@@ -4,12 +4,12 @@ import Nav from '../components/Nav/Nav';
 import { toaster } from '../App.js'
 
 const Login = ({ setAuthentication }) => {
-    const url = "http://nephthalims-chat.herokuapp.com"
+    const url = "https://nephthalims-chat.herokuapp.com"
     // const url = "http://localhost:5000"
 
     const loginUser = (user, setErrorMessage) => {
         fetch(
-            url + "/auth/login",
+            "/auth/login",
             {
                 method: 'POST',
                 body: user,
