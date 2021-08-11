@@ -12,7 +12,7 @@ const Contacts = ({ setContact, chatId, isAuthenticated, setAuthentication }) =>
     const [conversations, setConversations] = useState([]);
     const [searchRes, setSearchRes] = useState([]);
 
-    const url = "http://nephthalims-chat.herokuapp.com"
+    // const url = "http://nephthalims-chat.herokuapp.com"
     // const url = "http://127.0.0.1:5000"
     const match = useRouteMatch();
     const history = useHistory();
@@ -21,7 +21,7 @@ const Contacts = ({ setContact, chatId, isAuthenticated, setAuthentication }) =>
 
     const getConversations = () => {
         fetch(
-            url + "/dashboard/conversations",
+            "/dashboard/conversations",
             {
                 method: 'GET',
                 headers: {
@@ -51,7 +51,7 @@ const Contacts = ({ setContact, chatId, isAuthenticated, setAuthentication }) =>
 
     const getContacts = () => {
         fetch(
-            url + "/dashboard/search?query=" + searchInputRef.current.value,
+            "/dashboard/search?query=" + searchInputRef.current.value,
             {
                 method: 'GET',
                 headers: {
@@ -80,7 +80,7 @@ const Contacts = ({ setContact, chatId, isAuthenticated, setAuthentication }) =>
         setSearchRes([]);
         searchInputRef.current.value = "";
         fetch(
-            url + "/dashboard/conversations",
+            "/dashboard/conversations",
             {
                 method: 'POST',
                 headers: {
@@ -114,7 +114,7 @@ const Contacts = ({ setContact, chatId, isAuthenticated, setAuthentication }) =>
         setAuthentication(false);
 
         fetch(
-            url + "/auth/logout",
+            "/auth/logout",
             {
                 method: 'POST',
                 headers: {
@@ -137,7 +137,6 @@ const Contacts = ({ setContact, chatId, isAuthenticated, setAuthentication }) =>
     }
     useEffect(() => {
         getConversations()
-
         setChosen(chatId)
         searchInputRef.current.value = "";
     }, [chatId, isAuthenticated])

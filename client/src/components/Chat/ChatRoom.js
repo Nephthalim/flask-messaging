@@ -29,7 +29,7 @@ const ChatRoom = ({ socket, setChatId, contact }) => {
 
     const getMessages = () => {
         fetch(
-            url + '/chat/messages/' + chatId,
+            '/chat/messages/' + chatId,
             {
                 method: "GET",
                 headers:
