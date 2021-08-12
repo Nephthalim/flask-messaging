@@ -9,7 +9,7 @@ const Nav = () => {
                 <nav>
                     <ul>
                         <li><a
-                                href="https://www.linkedin.com/in/nephthalimabebe">Contact</a></li>
+                                href="https://www.linkedin.com/in/nephthalimabebe" target="_blank">Contact</a></li>
                     </ul>
                 </nav>
             </div> 

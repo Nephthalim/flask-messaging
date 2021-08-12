@@ -28,7 +28,7 @@ def login_required(f):
     return decorated_function
 
 
-def create_app(config_name):
+def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost:5430/relaydb'
     app.config['DEBUG'] = True
     app.config['SECRET_KEY'] = 'asdfasdfasdf'

@@ -29,15 +29,16 @@ function App() {
 
   const [isAuthenticated, setAuthentication] = useState(false);
 
-  const token = localStorage.getItem("token")
   
+  const token = localStorage.getItem("x-token")
   useEffect(() => {
     console.log("Hello")
     if (token && token !== "" && token !== undefined) {
       setAuthentication(true);
-    } else {
-      setAuthentication(false);
     }
+    console.log(token)
+    console.log(isAuthenticated)
+
   }, [])
   return (
     <div>
@@ -59,10 +60,7 @@ function App() {
         </Route>
 
         <Route path='/chat'>
-          
             <Chat isAuthenticated={isAuthenticated} setAuthentication={setAuthentication} />
-
-          
         </Route>
 
         <Route path='*'>

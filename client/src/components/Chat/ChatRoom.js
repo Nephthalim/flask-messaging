@@ -7,8 +7,6 @@ const ChatRoom = ({ socket, setChatId, contact }) => {
     const token = localStorage.getItem("x-token");
     const { chatId } = useParams();
     const textInputRef = useRef();
-    const url = "http://nephthalims-chat.herokuapp.com"
-    // const url = "http://127.0.0.1:5000"
     const [messages, setMessages] = useState([]);
     const [user, setUser] = useState([]);
 
@@ -39,12 +37,13 @@ const ChatRoom = ({ socket, setChatId, contact }) => {
                     "x-token": token
                 }
             }).then((res) => {
-                return res.json()
+                if (res.status === 200 || res.status === 201) return res.json()
             }).then((data) => {
                 setMessages(data.messages)
                 setUser(data.user)
             }).catch((err) => {
-                localStorage.removeItem('x-token')
+                console.log(err)
+                // localStorage.removeItem('x-token')
             })
     }
 
@@ -60,13 +59,16 @@ const ChatRoom = ({ socket, setChatId, contact }) => {
         <div className='hero'>
             <ScrollToBottom className="messages">
                 {messages.map((message) => {
-                    return <Message
+
+
+                    return<Message
                         key={message.id}
-                        name={contact}
+                        name={contact??""}
                         message={message.msg}
                         time_sent={message.time_sent}
                         my_message={message.sender === user}
                     />
+
                 }
                 )}
             </ScrollToBottom>

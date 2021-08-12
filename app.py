@@ -8,7 +8,7 @@ import bcrypt
 from flask_cors import cross_origin
 from server.models.user import User
 
-app = create_app('testing')
+app = create_app()
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 
@@ -58,6 +58,7 @@ def my_index():
 
 @app.route("/chat/<chat_id>")
 def chat(chat_id):
+    print(chat_id)
     return render_template("index.html")
 
 if __name__ == "__main__":
