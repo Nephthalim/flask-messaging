@@ -11,9 +11,8 @@ import './Chat.css'
 import { io } from "socket.io-client";
 const Chat = ({ isAuthenticated, setAuthentication }) => {
     const token = localStorage.getItem('x-token')
-    const url = "wss://nephthalims-chat.herokuapp.com"
-    // const url = "http://127.0.0.1:5000"
-    const socket = io(url, { path: '/socket.io/', extraHeaders: { 'x-token': token, 'Content-Type': 'application/json' } });
+    const url = "http://127.0.0.1:5000"
+    const socket = io({ path: '/socket.io/', extraHeaders: { 'x-token': token, 'Content-Type': 'application/json' } });
     const [chatId, setChatId] = useState();
     const [contact, setContact] = useState();
     const match = useRouteMatch();
@@ -23,11 +22,10 @@ const Chat = ({ isAuthenticated, setAuthentication }) => {
         if (token && token !== "" && token !== undefined) {
             setAuthentication(true);
         }
-
     }, [])
     return (
         <div className='chat'>
-            <SideBar setContact={setContact} chatId={chatId} isAuthenticated={isAuthenticated} setAuthentication={setAuthentication}/>
+            <SideBar setContact={setContact} chatId={chatId} isAuthenticated={isAuthenticated} setAuthentication={setAuthentication} />
             <Switch>
                 <Route exact path={match.path}>
                     <div className='image'>
@@ -35,7 +33,7 @@ const Chat = ({ isAuthenticated, setAuthentication }) => {
                     </div>
                 </Route>
                 <Route exact path={`${match.path}/:chatId`}>
-                    <ChatRoom socket={socket} setChatId={setChatId} contact={contact}/>
+                    <ChatRoom socket={socket} setChatId={setChatId} contact={contact} />
                 </Route>
             </Switch>
 

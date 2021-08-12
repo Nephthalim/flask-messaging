@@ -7,11 +7,9 @@ from flask_jwt_extended import create_access_token
 import bcrypt
 from flask_cors import cross_origin
 from server.models.user import User
-from worker import Sockets
 
 app = create_app('testing')
-socketio = Sockets(app)
-# socketio = SocketIO(app, cors_allowed_origins="*")
+socketio = SocketIO(app, cors_allowed_origins="*")
 
 
 def save_message(msg, user, convo):
@@ -63,7 +61,4 @@ def chat(chat_id):
     return render_template("index.html")
 
 if __name__ == "__main__":
-    from gevent import pywsgi
-    from geventwebsocket.handler import WebSocketHandler
-    server = pywsgi.WSGIServer(('', 5000), app, handler_class=WebSocketHandler)
-    server.serve_forever()
+    socketio.run(app)
