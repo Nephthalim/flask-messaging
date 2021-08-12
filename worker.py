@@ -100,13 +100,13 @@ class Sockets(object):
 
 
 # CLI sugar.
-if ('Worker' in locals() and 'PyWSGIHandler' in locals() and
-        'gevent' in locals()):
+# if ('Worker' in locals() and 'PyWSGIHandler' in locals() and
+#         'gevent' in locals()):
 
-    class GunicornWebSocketHandler(PyWSGIHandler, WebSocketHandler):
-        def log_request(self):
-            if '101' not in self.status:
-                super(GunicornWebSocketHandler, self).log_request()
+class GunicornWebSocketHandler(PyWSGIHandler, WebSocketHandler):
+    def log_request(self):
+        if '101' not in self.status:
+            super(GunicornWebSocketHandler, self).log_request()
 
-    Worker.wsgi_handler = GunicornWebSocketHandler
-    worker = Worker
+Worker.wsgi_handler = GunicornWebSocketHandler
+worker = Worker
