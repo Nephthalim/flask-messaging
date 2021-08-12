@@ -1,1 +1,1 @@
- gunicorn -k app.worker hello:app
+ gunicorn -k worker.worker hello:app
