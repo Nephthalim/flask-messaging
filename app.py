@@ -61,8 +61,4 @@ def chat(chat_id):
     return render_template("index.html")
 
 if __name__ == "__main__":
-    # socketio.run(app)
-    from gevent import pywsgi
-    from geventwebsocket.handler import WebSocketHandler
-    server = pywsgi.WSGIServer(('', 5000), app, handler_class=WebSocketHandler)
-    server.serve_forever()
+    socketio.run(app)
