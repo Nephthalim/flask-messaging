@@ -60,5 +60,24 @@ def my_index():
 def chat(chat_id):
     return render_template("index.html")
 
+# Monkeys are made for freedom.
+try:
+    from geventwebsocket.gunicorn.workers import GeventWebSocketWorker as Worker
+    from geventwebsocket.handler import WebSocketHandler
+    from gunicorn.workers.ggevent import PyWSGIHandler
+
+    import gevent
+except ImportError:
+    pass
+
+class GunicornWebSocketHandler(PyWSGIHandler, WebSocketHandler):
+    def log_request(self):
+        if '101' not in self.status:
+            super(GunicornWebSocketHandler, self).log_request()
+
+Worker.wsgi_handler = GunicornWebSocketHandler
+worker = Worker
+
+
 if __name__ == "__main__":
     socketio.run(app)
