@@ -39,9 +39,10 @@ def register_user():
 
     if User.query.filter_by(username=username).count() == 1:
         return {'msg': "User already exists"}, 401
-
+    print(password)
     hashedpwd = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
 
+    print(hashedpwd)
     user = User(username=username, password=hashedpwd)
     db.session.add(user)
     db.session.commit()
