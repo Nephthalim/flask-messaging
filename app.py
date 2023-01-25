@@ -51,15 +51,20 @@ def join(message):
     emit('join', {'user': session['user'], 'room': conversation_id})
     return 'joined'
 
-@app.route("/")
-@app.route("/chat")
-def my_index():
-    return render_template("index.html")
+# @app.route("/")
+# @app.route("/chat")
+# def my_index():
+#     return render_template("index.html")
 
 @app.route("/chat/<chat_id>")
 def chat(chat_id):
     print(chat_id)
     return render_template("index.html")
+
+@app.route('/')
+def index():
+    print("GET")
+    return render_template('index.html')
 
 if __name__ == "__main__":
     socketio.run(app)

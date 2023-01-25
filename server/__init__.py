@@ -29,11 +29,18 @@ def login_required(f):
 
 
 def create_app():
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@localhost:5430/relaydb'
+    """
+    db = railway
+    host = containers-us-west-180.railway.app
+    password = 8xxSdBWrv1z4GWrifwFP
+    port = 7432
+    user = postgres
+    postgresql://postgres:8xxSdBWrv1z4GWrifwFP@ontainers-us-west-180.railway.app:7432/railway
+    """
     app.config['DEBUG'] = True
     app.config['SECRET_KEY'] = 'asdfasdfasdf'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://czxagpbyvqgixj:be1592fba4bacb85888fa58cf9a692afdb66f1c8358f27110f2cbd49ef5c7e51@ec2-54-211-176-156.compute-1.amazonaws.com:5432/de1p4tutb4tt2j"
+    app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:8xxSdBWrv1z4GWrifwFP@containers-us-west-180.railway.app:7432/railway"
     app.config['JWT_SECRET_KEY'] = 'DFRHAPEDsdhgpdr8werdf'
     app.config['JWT_HEADER_NAME'] = 'x-token'
     app.config['JWT_HEADER_TYPE'] = ''
