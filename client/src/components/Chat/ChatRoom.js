@@ -60,7 +60,6 @@ const ChatRoom = ({ socket, setChatId, contact }) => {
             <ScrollToBottom className="messages">
                 {messages.map((message) => {
 
-
                     return<Message
                         key={message.id}
                         name={contact??""}

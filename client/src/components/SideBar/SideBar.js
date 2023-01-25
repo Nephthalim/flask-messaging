@@ -1,21 +1,21 @@
 import React, { useEffect, useRef } from 'react'
 
 import { useState } from 'react'
-import { useHistory, Link, useRouteMatch } from 'react-router-dom'
+import { useNavigate, Link, useMatch } from 'react-router-dom'
 import { toaster } from '../../App';
 import Conversation from './Conversation'
 import './SideBar.css';
-import { BiLogOut } from "react-icons/bi";
+import { BiLogOut } from "@react-icons/all-files/bi/BiLogOut";
+
 
 const Contacts = ({ setContact, chatId, isAuthenticated, setAuthentication }) => {
     const [chosen, setChosen] = useState();
     const [conversations, setConversations] = useState([]);
     const [searchRes, setSearchRes] = useState([]);
-    const match = useRouteMatch();
-    const history = useHistory();
+    const match = useMatch();
     const token = localStorage.getItem('x-token')
     const searchInputRef = useRef();
-
+    const navigate = useNavigate();
     const getConversations = () => {
         fetch(
             "/dashboard/conversations",
@@ -36,7 +36,7 @@ const Contacts = ({ setContact, chatId, isAuthenticated, setAuthentication }) =>
                 toaster.error("Conversation already exists");
 
             }
-            else history.push('/')
+            else navigate.push('/')
         }).then((data) => {
             setConversations(data.conversations)
 
@@ -96,11 +96,11 @@ const Contacts = ({ setContact, chatId, isAuthenticated, setAuthentication }) =>
                 setChosen(chosen.id)
                 throw ("Conversation exists");
             }
-            else history.push('/')
+            else navigate.push('/')
         }).then((data) => {
             setConversations(conversations => [...conversations, data.conversation]);
             setChosen(data.conversation.id)
-            history.push(`${match.path}/${data.conversation.id}`);
+            navigate.push(`${match.path}/${data.conversation.id}`);
         }).catch((error) => {
             console.log(error);
             setAuthentication(false);
@@ -125,10 +125,10 @@ const Contacts = ({ setContact, chatId, isAuthenticated, setAuthentication }) =>
             if (res.status === 200) return res.json();
         }).then((data) => {
             localStorage.removeItem('x-token');
-            history.push('/');
+            navigate.push('/');
         }).catch((error) => {
             console.log(error)
-            history.push('/');
+            navigate.push('/');
 
         })
     }

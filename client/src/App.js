@@ -1,5 +1,5 @@
-import { Switch, Route, Redirect } from 'react-router-dom';
-import { useState, useEffect } from 'react'
+import { Routes, Route, Navigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
 import Chat from './pages/Chat';
 import Register from './pages/Register';
 import Login from './pages/Login';
@@ -25,6 +25,7 @@ export const toaster = {
       progress: undefined,
   }),
 }
+
 function App() {
 
   const [isAuthenticated, setAuthentication] = useState(false);
@@ -42,31 +43,12 @@ function App() {
   }, [])
   return (
     <div>
-      <Switch>
-
-        <Route path='/' exact>
-          {!isAuthenticated ?
-            <Login setAuthentication={setAuthentication} />
-            :
-            <Redirect to='/chat' />
-          }
-        </Route>
-        <Route path='/register' exact>
-          {!isAuthenticated ?
-            <Register setAuthentication={setAuthentication} />
-            :
-            <Redirect to='/chat' />
-          }
-        </Route>
-
-        <Route path='/chat'>
-            <Chat isAuthenticated={isAuthenticated} setAuthentication={setAuthentication} />
-        </Route>
-
-        <Route path='*'>
-          <Redirect to='/' />
-        </Route>
-      </Switch>
+      <Routes>
+        <Route path='/' element={!isAuthenticated ?<Login setAuthentication={setAuthentication} />:<Navigate to='/chat'/>}/>
+        <Route path='/register' element={!isAuthenticated ?<Register setAuthentication={setAuthentication} />:<Navigate to='/chat' />}/>
+        <Route path='/chat' element={<Chat isAuthenticated={isAuthenticated} setAuthentication={setAuthentication}/>}/>
+        <Route path='*' element={<Navigate to='/' />}/>
+      </Routes>
       <ToastContainer
         position="bottom-right"
         autoClose={2500}
