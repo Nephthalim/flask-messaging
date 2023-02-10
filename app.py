@@ -57,10 +57,10 @@ def join(message):
 def my_index():
     return render_template("index.html")
 
-# @app.route("/chat/<chat_id>")
-# def chat(chat_id):
-#     print(chat_id)
-#     return render_template("index.html")
+@app.route("/chat/<chat_id>")
+def chat(chat_id):
+    print(chat_id)
+    return render_template("index.html")
 
 @app.route('/')
 def index():
