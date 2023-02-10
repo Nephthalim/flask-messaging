@@ -7,16 +7,16 @@ const Message = (props) => {
         <li className={props.my_message ? 'my_message message' : 'their_message message'}>
             <div className='card'>
                 <div className='content'>
-                    {!props.my_message ?
-                        (<div className="initials">
-                            <p>
-                                {props.name.toUpperCase()}
-                            </p>
-                        </div>)
-                        : null
+                    <div className='name'>
+                    {props.my_message ?
+                        <p>You </p>:
+                        <p>{props.name[0].toUpperCase() + props.name.substr(1)}</p>
                     }
-                    <div className='text_message'>
-                        {props.message}
+                    </div>
+                    <div>
+                        <div className='text_message'>
+                            {props.message}
+                        </div>
                     </div>
                 </div>
                 <div className='time_sent'>{props.time_sent}</div>

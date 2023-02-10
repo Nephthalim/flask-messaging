@@ -1,21 +1,20 @@
 import React, { useEffect, useRef } from 'react'
 
 import { useState } from 'react'
-import { useNavigate, Link, useMatch } from 'react-router-dom'
+import { redirect, Link } from 'react-router-dom'
 import { toaster } from '../../App';
 import Conversation from './Conversation'
 import './SideBar.css';
 import { BiLogOut } from "@react-icons/all-files/bi/BiLogOut";
 
 
-const Contacts = ({ setContact, chatId, isAuthenticated, setAuthentication }) => {
-    const [chosen, setChosen] = useState();
+const SideBar = ({ setChosen, chosen, setAuthentication }) => {
+    
     const [conversations, setConversations] = useState([]);
     const [searchRes, setSearchRes] = useState([]);
-    const match = useMatch();
     const token = localStorage.getItem('x-token')
     const searchInputRef = useRef();
-    const navigate = useNavigate();
+    
     const getConversations = () => {
         fetch(
             "/dashboard/conversations",
@@ -36,7 +35,7 @@ const Contacts = ({ setContact, chatId, isAuthenticated, setAuthentication }) =>
                 toaster.error("Conversation already exists");
 
             }
-            else navigate.push('/')
+            else redirect.push('/')
         }).then((data) => {
             setConversations(data.conversations)
 
@@ -96,11 +95,11 @@ const Contacts = ({ setContact, chatId, isAuthenticated, setAuthentication }) =>
                 setChosen(chosen.id)
                 throw ("Conversation exists");
             }
-            else navigate.push('/')
+            else redirect.push('/')
         }).then((data) => {
             setConversations(conversations => [...conversations, data.conversation]);
             setChosen(data.conversation.id)
-            navigate.push(`${match.path}/${data.conversation.id}`);
+            redirect.push(`/${data.conversation.id}`);
         }).catch((error) => {
             console.log(error);
             setAuthentication(false);
@@ -109,7 +108,6 @@ const Contacts = ({ setContact, chatId, isAuthenticated, setAuthentication }) =>
 
     const logout = () => {
         setAuthentication(false);
-
         fetch(
             "/auth/logout",
             {
@@ -125,18 +123,18 @@ const Contacts = ({ setContact, chatId, isAuthenticated, setAuthentication }) =>
             if (res.status === 200) return res.json();
         }).then((data) => {
             localStorage.removeItem('x-token');
-            navigate.push('/');
+            redirect.push('/');
         }).catch((error) => {
             console.log(error)
-            navigate.push('/');
+            redirect.push('/');
 
         })
     }
     useEffect(() => {
+        console.log("Here")
         getConversations()
-        setChosen(chatId)
         searchInputRef.current.value = "";
-    }, [chatId, isAuthenticated])
+    }, [chosen])
 
 
     return (
@@ -150,7 +148,7 @@ const Contacts = ({ setContact, chatId, isAuthenticated, setAuthentication }) =>
                 {
                     searchRes.length === 0 ?
                         conversations.map((conversation) => {
-                            return <Link to={`${match.url}/${conversation.id}`} className="link" key={conversation.id} onClick={() => setContact(conversation.username[0])}>
+                            return <Link to={`${conversation.id}`} className="link" key={conversation.id}>
                                 <Conversation
                                     key={conversation.id}
                                     conversation={conversation}
@@ -179,4 +177,4 @@ const Contacts = ({ setContact, chatId, isAuthenticated, setAuthentication }) =>
     )
 }
 
-export default Contacts
+export default SideBar

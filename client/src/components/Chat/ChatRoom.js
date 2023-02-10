@@ -1,28 +1,31 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, } from 'react-router-dom'
 import './ChatRoom.css'
 import Message from '../Message/Message';
 import ScrollToBottom from 'react-scroll-to-bottom';
-const ChatRoom = ({ socket, setChatId, contact }) => {
+import { io } from "socket.io-client";
+
+const ChatRoom = ({ setChatId, chosen, setChosen}) => {
+    
     const token = localStorage.getItem("x-token");
+    const socket = io({ path: '/socket.io/', extraHeaders: { 'x-token': token, 'Content-Type': 'application/json' } });
     const { chatId } = useParams();
     const textInputRef = useRef();
     const [messages, setMessages] = useState([]);
+    const [contact, setContact] = useState();
     const [user, setUser] = useState([]);
-
-
     const sendMessage = (e) => {
         e.preventDefault();
         const enteredTextInput = textInputRef.current.value;
-        console.log(enteredTextInput)
         socket.emit('message', { msg: enteredTextInput, conversation_id: chatId });
         textInputRef.current.value = "";
     }
-
-
-    socket.on('message', data => {
+    socket.on("message", data => {
         setMessages(messages => [...messages, data])
 
+    });
+    socket.on("connect", () => {
+        console.log("Connected")
     });
 
     const getMessages = () => {
@@ -39,20 +42,23 @@ const ChatRoom = ({ socket, setChatId, contact }) => {
             }).then((res) => {
                 if (res.status === 200 || res.status === 201) return res.json()
             }).then((data) => {
+                setContact(data.recipient)
                 setMessages(data.messages)
                 setUser(data.user)
             }).catch((err) => {
                 console.log(err)
-                // localStorage.removeItem('x-token')
+                
             })
     }
 
-    useEffect(() => {
-        getMessages();
-        socket.connect();
-        socket.emit('join', { conversation_id: chatId })
-        setChatId(chatId)
+    useEffect(()=>{
+        socket.connect()
+        socket.emit("join", { conversation_id: chatId })
+    },[])
 
+    useEffect(() => {
+        setChatId(chatId)
+        getMessages();
     }, [chatId])
 
     return (
@@ -60,9 +66,9 @@ const ChatRoom = ({ socket, setChatId, contact }) => {
             <ScrollToBottom className="messages">
                 {messages.map((message) => {
 
-                    return<Message
+                    return <Message
                         key={message.id}
-                        name={contact??""}
+                        name={contact}
                         message={message.msg}
                         time_sent={message.time_sent}
                         my_message={message.sender === user}

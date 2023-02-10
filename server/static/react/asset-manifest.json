@@ -1,15 +1,14 @@
 {
   "files": {
-    "main.css": "/static/react/static/css/main.f07f1041.css",
-    "main.js": "/static/react/static/js/main.8f1db2b1.js",
-    "static/media/undraw_Online_chat_re_c4lx.svg": "/static/react/static/media/undraw_Online_chat_re_c4lx.43211c95140f5a13847de09f8711ca50.svg",
+    "main.css": "/static/react/static/css/main.18f6f772.css",
+    "main.js": "/static/react/static/js/main.78f34024.js",
     "static/media/image.svg": "/static/react/static/media/image.1df5cf55dd20f922db49f0e69c7ec401.svg",
-    "index.html": "/static/react/index.html",
-    "main.f07f1041.css.map": "/static/react/static/css/main.f07f1041.css.map",
-    "main.8f1db2b1.js.map": "/static/react/static/js/main.8f1db2b1.js.map"
+    "../server/templates/index.html": "/static/react/../server/templates/index.html",
+    "main.18f6f772.css.map": "/static/react/static/css/main.18f6f772.css.map",
+    "main.78f34024.js.map": "/static/react/static/js/main.78f34024.js.map"
   },
   "entrypoints": [
-    "static/css/main.f07f1041.css",
-    "static/js/main.8f1db2b1.js"
+    "static/css/main.18f6f772.css",
+    "static/js/main.78f34024.js"
   ]
 }

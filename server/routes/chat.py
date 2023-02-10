@@ -17,14 +17,22 @@ chat = Blueprint('chat', __name__)
 @login_required
 def get_conversation_messages(conversation_id):
     try:
+        
         result = db.session.query(Message).from_statement(text(
             'SELECT * FROM "message" WHERE conversation={} ORDER BY time_sent ASC'.format(conversation_id))).all()
         messages = []
         for i in list(result):
             messages.append(i._tojson())
-        return {'user': session['user'], 'messages': messages}, 201
+        recipient_name=get_contact_name(conversation_id)
+        return {'user': session['user'], 'messages': messages, 'recipient': recipient_name}, 201
     except TypeError:
         return {'user': session['user'], 'messages': messages},200
     except:
         return {'msg': 'Server Failure'}, 500
+
+def get_contact_name(id):
+    result = Conversation.query.get(id)._tojson()
+    recipient = result['user_b'] if result['user_a'] == session['user'] else result['user_a']
+    recipient_name = User.query.get(recipient)._tojson()['username']
+    return recipient_name
 

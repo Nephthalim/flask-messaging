@@ -19,9 +19,10 @@ def save_message(msg, user, convo):
     return msg._tojson()
 
 
-@socketio.on('connect')
 @cross_origin()
+@socketio.on('connect')
 def connect():
+    print("connected")
     emit("connect", {'msg': 'connected'})
     return 'connect', 1
 
@@ -31,9 +32,9 @@ def disconnect():
     pass
 
 
+@cross_origin()
 @socketio.on('message')
 @login_required
-@cross_origin()
 def text(message):
     conversation_id = str(message["conversation_id"])
     msg = save_message(message['msg'], session['user'], conversation_id)
@@ -42,29 +43,31 @@ def text(message):
     return 'sent', 1
 
 
+@cross_origin()
 @socketio.on('join')
 @login_required
-@cross_origin()
 def join(message):
     conversation_id = str(message["conversation_id"])
     join_room(conversation_id)
     emit('join', {'user': session['user'], 'room': conversation_id})
     return 'joined'
 
-# @app.route("/")
-# @app.route("/chat")
-# def my_index():
-#     return render_template("index.html")
-
-@app.route("/chat/<chat_id>")
-def chat(chat_id):
-    print(chat_id)
+@app.route("/")
+@app.route("/chat")
+def my_index():
     return render_template("index.html")
+
+# @app.route("/chat/<chat_id>")
+# def chat(chat_id):
+#     print(chat_id)
+#     return render_template("index.html")
 
 @app.route('/')
 def index():
-    print("GET")
     return render_template('index.html')
+@app.errorhandler(404)   
+def not_found(e):   
+  return render_template('index.html')
 
 if __name__ == "__main__":
     socketio.run(app)

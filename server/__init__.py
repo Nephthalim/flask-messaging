@@ -7,9 +7,9 @@ from flask_cors import CORS
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, JWTManager, verify_jwt_in_request, decode_token
 
 
-app = Flask(__name__)
 
 db = SQLAlchemy()
+app = Flask(__name__)
 
 def login_required(f):
     @wraps(f)
@@ -22,8 +22,10 @@ def login_required(f):
         try:
             user_id = decode_token(token, allow_expired=True)['sub']
         except:
+            print("User not found")
             abort(401)
         session['user'] = user_id       
+        print("sessionUser from login required:{} ".format(session['user']))
         return f(*args, **kwargs)
     return decorated_function
 
