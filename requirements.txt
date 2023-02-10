@@ -77,7 +77,7 @@ parse==1.18.0
 passlib==1.7.4
 paypalrestsdk==1.13.1
 pdfkit==0.6.1
-Pillow==8.1.0
+Pillow==9.3.0
 protobuf==3.13.0
 psycopg2-binary==2.8.6
 PyAutoGUI==0.9.52
