@@ -42,7 +42,6 @@ function App() {
     if (token && token !== "" && token !== undefined) {
       setAuthentication(true);
     }
-    console.log("Here")
   }, [chosen])
   
 
