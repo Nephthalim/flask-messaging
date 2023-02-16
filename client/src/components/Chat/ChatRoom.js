@@ -17,10 +17,12 @@ const ChatRoom = ({ setChatId, chosen, setChosen }) => {
     const sendMessage = (e) => {
         e.preventDefault();
         const enteredTextInput = textInputRef.current.value;
+        console.log("Emitting Message")
         socket.emit('message', { msg: enteredTextInput, conversation_id: chatId });
         textInputRef.current.value = "";
     }
     socket.on("message", data => {
+        console.log("Received Message")
         setMessages(messages => [...messages, data])
 
     });
