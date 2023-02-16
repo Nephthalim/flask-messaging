@@ -5,10 +5,10 @@ import Message from '../Message/Message';
 import ScrollToBottom from 'react-scroll-to-bottom';
 import { io } from "socket.io-client";
 
-const ChatRoom = ({ setChatId, chosen, setChosen}) => {
-    
+const ChatRoom = ({ setChatId, chosen, setChosen }) => {
+
     const token = localStorage.getItem("x-token");
-    const socket = io("http://nephthalim-flask-messaging-app.onrender.com",{ extraHeaders: { 'x-token': token, 'Accept': 'application/json' } });
+    const socket = io("http://nephthalim-flask-messaging-app.onrender.com", { extraHeaders: { 'x-token': token, 'Accept': 'application/json' } });
     const { chatId } = useParams();
     const textInputRef = useRef();
     const [messages, setMessages] = useState([]);
@@ -17,16 +17,16 @@ const ChatRoom = ({ setChatId, chosen, setChosen}) => {
     const sendMessage = (e) => {
         e.preventDefault();
         const enteredTextInput = textInputRef.current.value;
-        // socket.emit('message', { msg: enteredTextInput, conversation_id: chatId });
+        socket.emit('message', { msg: enteredTextInput, conversation_id: chatId });
         textInputRef.current.value = "";
     }
-    // socket.on("message", data => {
-    //     setMessages(messages => [...messages, data])
+    socket.on("message", data => {
+        setMessages(messages => [...messages, data])
 
-    // });
-    // socket.on("connect", () => {
-    //     console.log("Connected")
-    // });
+    });
+    socket.on("connect", () => {
+        console.log("Connected")
+    });
 
     const getMessages = () => {
         fetch(
@@ -47,14 +47,14 @@ const ChatRoom = ({ setChatId, chosen, setChosen}) => {
                 setUser(data.user)
             }).catch((err) => {
                 console.log(err)
-                
+
             })
     }
 
-    useEffect(()=>{
-        // socket.connect()
-        // socket.emit("join", { conversation_id: chatId })
-    },[])
+    useEffect(() => {
+        socket.connect()
+        socket.emit("join", { conversation_id: chatId })
+    }, [])
 
     useEffect(() => {
         setChatId(chatId)
