@@ -10,7 +10,7 @@ const ChatRoom = ({ setChatId, chosen, setChosen }) => {
     const token = localStorage.getItem("x-token");
     const socket = io({
         cors: {
-            origin: "https://nephthalim-flask-messaging-app.onrender.com/",
+            origin: "https://nephthalim-flask-messaging-app.onrender.com:1000",
             methods: ["GET", "POST"],
             transports: ['websocket', 'polling'],
             credentials: true
