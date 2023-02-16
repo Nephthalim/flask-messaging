@@ -3,7 +3,7 @@ import { useParams, } from 'react-router-dom'
 import './ChatRoom.css'
 import Message from '../Message/Message';
 import ScrollToBottom from 'react-scroll-to-bottom';
-import { io } from "socket.io-client";
+// import { io } from "socket.io-client";
 
 const ChatRoom = ({ setChatId, chosen, setChosen}) => {
     

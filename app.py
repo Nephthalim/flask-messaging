@@ -65,6 +65,8 @@ def chat(chat_id):
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.errorhandler(400)   
 @app.errorhandler(404)   
 def not_found(e):   
   return render_template('index.html')
