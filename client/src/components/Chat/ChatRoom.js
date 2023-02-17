@@ -14,7 +14,7 @@ const ChatRoom = ({ setChatId, chosen, setChosen }) => {
             methods: ["GET", "POST"],
             transports: ['websocket', 'polling'],
             credentials: true
-        }, extraHeaders: { 'x-token': token, 'Accept': 'application/json' }
+        }, extraHeaders: { 'x-token': token }
     });
     const { chatId } = useParams();
     const textInputRef = useRef();
@@ -35,6 +35,9 @@ const ChatRoom = ({ setChatId, chosen, setChosen }) => {
     });
     socket.on("connect", () => {
         console.log("Connected")
+    });
+    socket.on("join", () => {
+        console.log("Joined Chat Channel")
     });
 
     const getMessages = () => {
