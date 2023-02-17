@@ -15,7 +15,7 @@ const ChatRoom = ({ setChatId, chosen, setChosen }) => {
             transports: ['websocket', 'polling'],
             credentials: true
         },
-        allowEIO3: true,
+        // allowEIO3: true,
         extraHeaders: { 'x-token': token }
     });
     const { chatId } = useParams();
