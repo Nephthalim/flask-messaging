@@ -14,7 +14,9 @@ const ChatRoom = ({ setChatId, chosen, setChosen }) => {
             methods: ["GET", "POST"],
             transports: ['websocket', 'polling'],
             credentials: true
-        }, extraHeaders: { 'x-token': token }
+        },
+        allowEIO3: true,
+        extraHeaders: { 'x-token': token }
     });
     const { chatId } = useParams();
     const textInputRef = useRef();
