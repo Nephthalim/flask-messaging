@@ -32,7 +32,6 @@ def disconnect():
     pass
 
 
-@cross_origin()
 @socketio.on('message')
 @login_required
 def text(message):
@@ -43,7 +42,6 @@ def text(message):
     return 'sent', 1
 
 
-@cross_origin()
 @socketio.on('join')
 @login_required
 def join(message):
