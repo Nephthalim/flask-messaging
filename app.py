@@ -19,7 +19,7 @@ def save_message(msg, user, convo):
     return msg._tojson()
 
 
-@cross_origin()
+
 @socketio.on('connect')
 def connect():
     print("connected")
