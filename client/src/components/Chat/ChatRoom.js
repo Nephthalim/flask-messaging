@@ -8,7 +8,7 @@ import { io } from "socket.io-client";
 const ChatRoom = ({ setChatId, chosen, setChosen }) => {
 
     const token = localStorage.getItem("x-token");
-    const socket = io({extraHeaders: { 'x-token': token, "Accept": "application/json" }});
+    const socket = io({ transports: ['polling'], extraHeaders: { 'x-token': token, "Accept": "application/json" } });
     const { chatId } = useParams();
     const textInputRef = useRef();
     const [messages, setMessages] = useState([]);
@@ -57,8 +57,8 @@ const ChatRoom = ({ setChatId, chosen, setChosen }) => {
     }
 
     useEffect(() => {
-        socket.connect()
         socket.emit("join", { conversation_id: chatId })
+        socket.connect()
     }, [])
 
     useEffect(() => {
