@@ -18,11 +18,8 @@ def save_message(msg, user, convo):
     db.session.commit()
     return msg._tojson()
 
-
-
 @socketio.on('connect')
 def connect():
-    print("connected")
     emit("connect", {'msg': 'connected'})
     return 'connect', 1
 
@@ -32,10 +29,9 @@ def disconnect():
     pass
 
 
-# @login_required
+@login_required
 @socketio.on('message')
 def text(message):
-    print(message['msg'])
     conversation_id = str(message["conversation_id"])
     msg = save_message(message['msg'], session['user'], conversation_id)
     msg['user'] = session['user']
@@ -43,33 +39,36 @@ def text(message):
     return 'sent', 1
 
 
-# @login_required
+@login_required
 @socketio.on('join')
 def join(message):
     conversation_id = str(message["conversation_id"])
-    print('Joining')
     join_room(conversation_id)
     emit('join', {'user': session['user'], 'room': conversation_id})
-    return 'joined',1
+    return 'joined', 1
+
 
 @app.route("/")
 @app.route("/chat")
 def my_index():
     return render_template("index.html")
 
+
 @app.route("/chat/<chat_id>")
 def chat(chat_id):
-    print(chat_id)
     return render_template("index.html")
+
 
 @app.route('/')
 def index():
     return render_template('index.html')
 
-@app.errorhandler(400)   
-@app.errorhandler(404)   
-def not_found(e):   
-  return render_template('index.html')
+
+@app.errorhandler(400)
+@app.errorhandler(404)
+def not_found(e):
+    return render_template('index.html')
+
 
 if __name__ == "__main__":
     socketio.run(app)

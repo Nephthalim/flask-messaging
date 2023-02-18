@@ -14,7 +14,6 @@ app = Flask(__name__)
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        # print(request.headers)
         if not 'x-token' in request.headers:
             abort(403)
         token = request.headers.get('x-token')
@@ -22,10 +21,8 @@ def login_required(f):
         try:
             user_id = decode_token(token, allow_expired=True)['sub']
         except:
-            print("User not found")
             abort(401)
         session['user'] = user_id       
-        print("sessionUser from login required:{} ".format(session['user']))
         return f(*args, **kwargs)
     return decorated_function
 
