@@ -8,15 +8,7 @@ import { io } from "socket.io-client";
 const ChatRoom = ({ setChatId, chosen, setChosen }) => {
 
     const token = localStorage.getItem("x-token");
-    const socket = io({
-        cors: {
-            origin: "https://nephthalim-flask-messaging-app.onrender.com:10000",
-            methods: ["GET", "POST"],
-            transports: ['websocket', 'polling'],
-            credentials: true
-        },
-        extraHeaders: { 'x-token': token, "Accept": "application/json" }
-    });
+    const socket = io({extraHeaders: { 'x-token': token, "Accept": "application/json" }});
     const { chatId } = useParams();
     const textInputRef = useRef();
     const [messages, setMessages] = useState([]);

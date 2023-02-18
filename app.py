@@ -35,6 +35,7 @@ def disconnect():
 @socketio.on('message')
 @login_required
 def text(message):
+    print(message['msg'])
     conversation_id = str(message["conversation_id"])
     msg = save_message(message['msg'], session['user'], conversation_id)
     msg['user'] = session['user']
@@ -46,9 +47,10 @@ def text(message):
 @login_required
 def join(message):
     conversation_id = str(message["conversation_id"])
+    print('Joining')
     join_room(conversation_id)
     emit('join', {'user': session['user'], 'room': conversation_id})
-    return 'joined'
+    return 'joined',1
 
 @app.route("/")
 @app.route("/chat")
