@@ -32,8 +32,8 @@ def disconnect():
     pass
 
 
+# @login_required
 @socketio.on('message')
-@login_required
 def text(message):
     print(message['msg'])
     conversation_id = str(message["conversation_id"])
@@ -43,8 +43,8 @@ def text(message):
     return 'sent', 1
 
 
+# @login_required
 @socketio.on('join')
-@login_required
 def join(message):
     conversation_id = str(message["conversation_id"])
     print('Joining')
